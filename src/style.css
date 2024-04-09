@@ -1,0 +1,26 @@
+#root{
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    top: 0px;
+}
+
+#backgroundStartPage {
+    background-image: url("images/background2.jpg");
+    width: 100%;
+    height: 700px;
+    color:rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#navMenuDiv h1{
+    background-color: beige;
+    margin: 0;
+}
+
+#footerMenu h1 {
+    background-color: beige;
+    margin: 0;
+}

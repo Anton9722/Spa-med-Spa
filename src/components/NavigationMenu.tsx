@@ -3,8 +3,8 @@ import React from "react"
 function NavigationMenu() {
 
   return (
-    <div>
-      <h1>Vilka är vi</h1>
+    <div id="navMenuDiv">
+      <h1>NavMenu Place Holder</h1>
     </div>
   )
 }

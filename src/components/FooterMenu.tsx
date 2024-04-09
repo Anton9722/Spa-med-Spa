@@ -3,8 +3,8 @@ import React from "react"
 function FooterMenu() {
 
   return (
-    <div>
-      <h1>Vilka är vi</h1>
+    <div id="footerMenu">
+      <h1>footerMenu Place Holder</h1>
     </div>
   )
 }

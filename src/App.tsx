@@ -1,12 +1,21 @@
 import { useState } from 'react'
-import "./App.css"
+//import "./App.css"
+import StartPage from './components/StartPage'
+import NavigationMenu from './components/NavigationMenu'
+import FooterMenu from './components/FooterMenu'
+import Products from './components/Products'
 
 function App() {
 
   return (
-    <div>
-      <h1>spa</h1>
-    </div>
+
+    <>
+    <NavigationMenu />
+    <StartPage />
+    <Products />
+    <FooterMenu />
+    </>
+
   )
 }
 
