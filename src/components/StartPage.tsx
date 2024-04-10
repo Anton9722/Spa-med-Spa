@@ -6,8 +6,7 @@ function StartPage() {
     <div id="backgroundStartPage">
       <div id="startPageCenterDiv">
         <h1>Dags att koppla av?</h1>
-        <h2>Boka tid hos</h2>
-        <button>Boka en tid hos oss</button>
+        <button className="startPageBtn">Boka en tid hos oss</button>
       </div>
     </div>
   )

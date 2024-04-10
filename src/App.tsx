@@ -13,6 +13,7 @@ function App() {
     <NavigationMenu />
     <StartPage />
     <Products />
+    <button className="startPageBtn">Boka en tid hos oss</button>
     <FooterMenu />
     </>
 

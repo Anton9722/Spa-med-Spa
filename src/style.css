@@ -24,3 +24,28 @@
     background-color: beige;
     margin: 0;
 }
+
+#productsContainer {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.product {
+    display: flex;
+}
+
+.productImg {
+    height: 250px;
+    width: 250px;
+}
+
+.startPageBtn{
+    margin-bottom: 20px;
+    background-color:#DDDDDD;
+    width: 300px;
+    height: 40px;
+    font-size: 25px;
+    padding: 0;
+}
