@@ -41,11 +41,16 @@
     width: 250px;
 }
 
-.startPageBtn{
+.btn{
     margin-bottom: 20px;
     background-color:#DDDDDD;
     width: 300px;
     height: 40px;
     font-size: 25px;
     padding: 0;
+}
+
+#calDiv{
+    display: flex;
+    justify-content: center;
 }

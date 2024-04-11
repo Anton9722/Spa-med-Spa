@@ -1,13 +1,16 @@
-import React from "react"
+import Products from "./Products"
 
-function StartPage() {
+function StartPage(props: any) {
 
   return (
-    <div id="backgroundStartPage">
-      <div id="startPageCenterDiv">
-        <h1>Dags att koppla av?</h1>
-        <button className="startPageBtn">Boka en tid hos oss</button>
+    <div>
+      <div id="backgroundStartPage">
+        <div id="startPageCenterDiv">
+          <h1>Dags att koppla av?</h1>
+          <button className="btn" onClick={() => props.handlePageNavigation("booking")}>Boka tid hos oss</button>
+        </div>
       </div>
+      <Products />
     </div>
   )
 }
