@@ -19,6 +19,14 @@ function BookingForm(props: any) {
 
         if(localStorage.getItem("bookings") === null){
             localStorage.setItem("bookings", jsonStringBookings);
+            let getJsonArray = localStorage.getItem("bookings");
+            let parseArray = getJsonArray ? JSON.parse(getJsonArray) : [];
+            let newBooking = booking;
+            parseArray.push(newBooking);
+            let updatedJsonBookings = JSON.stringify(parseArray);
+            localStorage.setItem("bookings", updatedJsonBookings);
+            alert("Din bokning är slutförd")
+            return;
         }
         
         let getJsonArray = localStorage.getItem("bookings");
@@ -27,21 +35,27 @@ function BookingForm(props: any) {
 
         let mergedArray: any = [].concat(...parseArray);
 
+        let alredyBookedBoolean = true;
+        
         mergedArray.forEach((element: { date: any, time: any, package: any }) => {
             console.log(element);    
             if(element.date === props.date.substring(props.date.indexOf("/"))) {
                 if(element.time === selectedTime && element.package === selectedPackage){
+                    alredyBookedBoolean = false;
                     alert("Denna tiden är upptagen");
                 }
             }
         });
 
-        let newBooking = booking;
-        parseArray.push(newBooking);
-
-        let updatedJsonBookings = JSON.stringify(parseArray);
-
-        localStorage.setItem("bookings", updatedJsonBookings);
+        if(alredyBookedBoolean){
+            let newBooking = booking;
+            parseArray.push(newBooking);
+    
+            let updatedJsonBookings = JSON.stringify(parseArray);
+    
+            localStorage.setItem("bookings", updatedJsonBookings);
+            alert("Din bokning är slutförd")
+        }
 
     }
 
