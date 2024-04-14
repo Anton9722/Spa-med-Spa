@@ -2,7 +2,6 @@ import { useState } from 'react'
 //import "./App.css"
 import StartPage from './components/StartPage'
 import NavigationMenu from './components/NavigationMenu'
-import FooterMenu from './components/FooterMenu'
 import Products from './components/Products'
 import Booking from './components/Booking'
 
@@ -21,7 +20,6 @@ function App() {
     <NavigationMenu />
     {currentPage === "start" && <StartPage handlePageNavigation = {handlePageNavigation}/>}
     {currentPage === "booking" && <Booking />}
-    <FooterMenu />
     </>
 
   )

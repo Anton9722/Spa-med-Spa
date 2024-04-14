@@ -7,12 +7,10 @@ function Products() {
       <div className="product">
         <img src="src\images\pool.jpg" className="productImg"/>
         <h2>Lyx paketet</h2>
-        <h4>Lite textaöslf löaskfklasfköasfkasflasfk aksf kaskf  kaö fka</h4>
       </div>
       <div className="product">
         <img src="src\images\sauna.jpg" className="productImg"/>
         <h2>Standard paketet</h2>
-        <h4>lite textsad aaskjd asjd jasjd jasjd lajsd lkasjd laksjd laksjd</h4>
       </div>
     </div>
   )
