@@ -2,11 +2,14 @@ import { useState } from "react";
 import Products from "./Products"
 import Calendar from "react-calendar";
 import 'react-calendar/dist/Calendar.css';
+import BookingForm from "./BookingForm";
 
 function Booking() {
 
-  const [pickedDateToDisplay, setPickedDateToDisplay] = useState("")
-  
+  const [pickedDateToDisplay, setPickedDateToDisplay] = useState("");
+  const [showPickedDate, setShowPickedDate] = useState(false);
+
+
   function checkIfHoliday(day: string) {
     
     fetch("http://sholiday.faboul.se/dagar/v2.1" + day)
@@ -14,10 +17,12 @@ function Booking() {
     .then(data => {
       if(data.dagar[0].helgdag !== undefined || data.dagar[0].veckodag === "Måndag") {
 
-        setPickedDateToDisplay("Den här tiden är upptagen eller är en helgdag")
-
+        setPickedDateToDisplay("Den här tiden har vi stängt");
+        setShowPickedDate(false);
+        
       } else {
-        setPickedDateToDisplay("Boka tid vid " + day)
+        setPickedDateToDisplay("Boka tid vid " + day);
+        setShowPickedDate(true);
       }
     })
   }
@@ -35,11 +40,12 @@ function Booking() {
   return (
     <div>
       <Products />
-      <h4>Stängt Måndagar och svenska helgdagar</h4>
+      <h2>Stängt Måndagar och svenska helgdagar</h2>
       <div id="calDiv">
         <Calendar onChange={updateDateChange} value={pickedDateToDisplay}/>
       </div>
       <h4>{pickedDateToDisplay}</h4>
+      {showPickedDate && <BookingForm date={pickedDateToDisplay}/>}
     </div>
   )
 }
