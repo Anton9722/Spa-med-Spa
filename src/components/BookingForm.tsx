@@ -8,55 +8,29 @@ function BookingForm(props: any) {
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        let booking = [{
+        let newBooking = {
             number: phoneNumber,
-            package: selectedPackage,
+            spaPackage: selectedPackage,
             time: selectedTime,
             date: props.date.substring(props.date.indexOf("/"))
-        }]
-        
-        let jsonStringBookings = JSON.stringify(booking);
-
-        if(localStorage.getItem("bookings") === null){
-            localStorage.setItem("bookings", jsonStringBookings);
-            let getJsonArray = localStorage.getItem("bookings");
-            let parseArray = getJsonArray ? JSON.parse(getJsonArray) : [];
-            let newBooking = booking;
-            parseArray.push(newBooking);
-            let updatedJsonBookings = JSON.stringify(parseArray);
-            localStorage.setItem("bookings", updatedJsonBookings);
-            alert("Din bokning är slutförd")
-            return;
         }
-        
-        let getJsonArray = localStorage.getItem("bookings");
 
-        let parseArray = getJsonArray ? JSON.parse(getJsonArray) : [];
+        fetch("http://localhost:8080/booking", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(newBooking),
+        })
+        .then(res =>res.json())
 
-        let mergedArray: any = [].concat(...parseArray);
-
-        let alredyBookedBoolean = true;
-        
-        mergedArray.forEach((element: { date: any, time: any, package: any }) => {
-            console.log(element);    
-            if(element.date === props.date.substring(props.date.indexOf("/"))) {
-                if(element.time === selectedTime && element.package === selectedPackage){
-                    alredyBookedBoolean = false;
-                    alert("Denna tiden är upptagen");
-                }
+        .then(data => {
+            if (data.id == null) {
+                alert("Tiden är upptagen");
+            } else{
+                alert("Din tid är bokad")
             }
-        });
-
-        if(alredyBookedBoolean){
-            let newBooking = booking;
-            parseArray.push(newBooking);
-    
-            let updatedJsonBookings = JSON.stringify(parseArray);
-    
-            localStorage.setItem("bookings", updatedJsonBookings);
-            alert("Din bokning är slutförd")
-        }
-
+        })
     }
 
     return(
@@ -66,8 +40,8 @@ function BookingForm(props: any) {
             <h4>Välj paket</h4>
             <select name="product" required value={selectedPackage} onChange={(event) => setSelectedPackage(event.target.value)}>
                 <option value="">Välj ditt paket</option>
-                <option value="lyx">Lyx paketet</option>
-                <option value="standard">Standard paketet</option>
+                <option value="Lyx">Lyx paketet</option>
+                <option value="Standard">Standard paketet</option>
             </select>
             <h4>Välj tid</h4>
             <select name="time" required value={selectedTime} onChange={(event) => setSelectedTime(event.target.value)}>
